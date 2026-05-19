@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Premium Admin Dashboard and Landing Page with Analytics">
+    <title>NexGen Analytics Dashboard</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@500;700&display=swap" rel="stylesheet">
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- Styles -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="dashboard-layout">
+        <!-- Sidebar Navigation -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <div class="logo">
+                    <span class="logo-icon"></span>
+                    <h2>NexGen</h2>
+                </div>
+            </div>
+            <nav class="sidebar-nav">
+                <button class="nav-btn active" data-target="landing-view">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
+                    <span>Landing Page</span>
+                </button>
+                <button class="nav-btn" data-target="analytics-view">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="20" x2="18" y2="10"></line><line x1="12" y1="20" x2="12" y2="4"></line><line x1="6" y1="20" x2="6" y2="14"></line></svg>
+                    <span>Analytics</span>
+                </button>
+            </nav>
+        </aside>
+
+        <!-- Main Content Area -->
+        <main class="main-content">
+            <header class="topbar">
+                <button class="mobile-menu-toggle" aria-label="Toggle Menu">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+                </button>
+                <div class="topbar-right">
+                    <div class="user-profile" id="userProfileBtn">
+                        <img src="https://ui-avatars.com/api/?name=Admin+User&background=6366f1&color=fff" alt="User Profile" class="avatar">
+                        <div class="profile-dropdown" id="profileDropdown">
+                            <div class="dropdown-header">
+                                <span class="user-name">Admin User</span>
+                                <span class="user-email">admin@nexgen.com</span>
+                            </div>
+                            <div class="dropdown-divider"></div>
+                            <button class="dropdown-item" onclick="alert('Profile clicked!')">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+                                <span>My Profile</span>
+                            </button>
+                            <button class="dropdown-item" onclick="alert('Settings clicked!')">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg>
+                                <span>Settings</span>
+                            </button>
+                            <div class="dropdown-divider"></div>
+                            <button class="dropdown-item logout" onclick="alert('Logging out...')">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path><polyline points="16 17 21 12 16 7"></polyline><line x1="21" y1="12" x2="9" y2="12"></line></svg>
+                                <span>Logout</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </header>
+
+            <div class="view-container">
+                <!-- Landing Page View -->
+                <section id="landing-view" class="view active">
+                    <!-- Hero Section -->
+                    <div class="hero animate-on-scroll fade-up">
+                        <!-- Glowing background blobs -->
+                        <div class="glowing-blob blob-1"></div>
+                        <div class="glowing-blob blob-2"></div>
+
+                        <div class="hero-grid">
+                            <div class="hero-text">
+                                <div class="badge">Next Generation Analytics</div>
+                                <h1 class="hero-title">Visualize Your Data With <span>Clarity</span></h1>
+                                <p class="hero-subtitle">The most powerful and beautifully designed dashboard for your SaaS application. Gain insights faster.</p>
+                                <div class="hero-actions">
+                                    <button class="btn btn-primary" onclick="document.querySelector('[data-target=\'analytics-view\']').click()">Explore Dashboard</button>
+                                    <button class="btn btn-secondary" onclick="document.querySelector('.pricing').scrollIntoView({behavior: 'smooth'})">View Pricing</button>
+                                </div>
+                            </div>
+                            
+                            <div class="hero-visual">
+                                <div class="dashboard-preview">
+                                    <div class="preview-header">
+                                        <div class="preview-dots">
+                                            <span></span><span></span><span></span>
+                                        </div>
+                                        <div class="preview-title">Live Analytics</div>
+                                    </div>
+                                    <div class="preview-body">
+                                        <div class="preview-stats">
+                                            <div class="preview-stat">
+                                                <span class="stat-label">Revenue</span>
+                                                <span class="stat-num">$14,820</span>
+                                                <span class="stat-trend positive">+24%</span>
+                                            </div>
+                                            <div class="preview-stat">
+                                                <span class="stat-label">Active Users</span>
+                                                <span class="stat-num">2,840</span>
+                                                <span class="stat-trend positive">+18%</span>
+                                            </div>
+                                        </div>
+                                        <div class="preview-chart-wrapper">
+                                            <svg viewBox="0 0 300 120" class="preview-svg">
+                                                <defs>
+                                                    <linearGradient id="chartGlow" x1="0" y1="0" x2="0" y2="1">
+                                                        <stop offset="0%" stop-color="var(--accent-primary)" stop-opacity="0.3"/>
+                                                        <stop offset="100%" stop-color="var(--accent-primary)" stop-opacity="0"/>
+                                                    </linearGradient>
+                                                </defs>
+                                                <path class="chart-line-bg" d="M0 100 Q 50 30, 100 65 T 200 40 T 300 20 L 300 120 L 0 120 Z" fill="url(#chartGlow)" />
+                                                <path class="chart-line" d="M0 100 Q 50 30, 100 65 T 200 40 T 300 20" fill="none" stroke="var(--accent-primary)" stroke-width="3" />
+                                                <circle cx="100" cy="65" r="4" fill="var(--accent-primary)" class="chart-dot" />
+                                                <circle cx="200" cy="40" r="4" fill="var(--accent-primary)" class="chart-dot" />
+                                            </svg>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="floating-overlay card-1">
+                                    <div class="overlay-icon">⚡</div>
+                                    <div class="overlay-content">
+                                        <span class="overlay-title">Conversion Rate</span>
+                                        <span class="overlay-value">4.8%</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Features Grid -->
+                    <div class="features section-padding">
+                        <div class="section-header animate-on-scroll fade-up">
+                            <h2>Powerful Features</h2>
+                            <p>Everything you need to scale your business.</p>
+                        </div>
+                        <div class="features-grid">
+                            <div class="feature-card animate-on-scroll slide-in-left">
+                                <div class="feature-icon">⚡</div>
+                                <h3>Real-time Processing</h3>
+                                <p>Watch your data update in real-time with zero latency and high performance.</p>
+                            </div>
+                            <div class="feature-card animate-on-scroll slide-in-bottom">
+                                <div class="feature-icon">🔒</div>
+                                <h3>Enterprise Security</h3>
+                                <p>Bank-grade encryption protecting your most valuable analytics data.</p>
+                            </div>
+                            <div class="feature-card animate-on-scroll slide-in-right">
+                                <div class="feature-icon">📊</div>
+                                <h3>Custom Reports</h3>
+                                <p>Generate beautiful, insightful reports tailored to your exact needs.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Pricing Table -->
+                    <div class="pricing section-padding">
+                        <div class="section-header animate-on-scroll fade-up">
+                            <h2>Simple Pricing</h2>
+                            <p>Choose the plan that fits your growth.</p>
+                        </div>
+                        <div class="pricing-grid">
+                            <div class="pricing-card animate-on-scroll fade-up" style="transition-delay: 0.1s">
+                                <h3>Starter</h3>
+                                <div class="price"><span>$</span>29<span>/mo</span></div>
+                                <ul class="features-list">
+                                    <li>Up to 10k events/mo</li>
+                                    <li>Basic analytics</li>
+                                    <li>48-hour support</li>
+                                </ul>
+                                <button class="btn btn-outline">Get Started</button>
+                            </div>
+                            <div class="pricing-card highlighted animate-on-scroll fade-up" style="transition-delay: 0.2s">
+                                <div class="popular-badge">Most Popular</div>
+                                <h3>Pro</h3>
+                                <div class="price"><span>$</span>99<span>/mo</span></div>
+                                <ul class="features-list">
+                                    <li>Up to 1M events/mo</li>
+                                    <li>Advanced dashboards</li>
+                                    <li>Priority 24/7 support</li>
+                                    <li>Custom exports</li>
+                                </ul>
+                                <button class="btn btn-primary">Get Started</button>
+                            </div>
+                            <div class="pricing-card animate-on-scroll fade-up" style="transition-delay: 0.3s">
+                                <h3>Enterprise</h3>
+                                <div class="price"><span>$</span>299<span>/mo</span></div>
+                                <ul class="features-list">
+                                    <li>Unlimited events</li>
+                                    <li>Dedicated infrastructure</li>
+                                    <li>Account manager</li>
+                                    <li>SLA guarantee</li>
+                                </ul>
+                                <button class="btn btn-outline">Get Started</button>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Analytics Dashboard View -->
+                <section id="analytics-view" class="view">
+                    <div class="dashboard-header animate-on-scroll fade-up">
+                        <h2>Analytics Overview</h2>
+                        <div class="date-picker-container" style="position: relative; z-index: 100;">
+                            <button class="date-picker btn btn-secondary" id="datePickerBtn" aria-haspopup="true" aria-expanded="false">
+                                <span id="selectedDateRange">Last 30 Days</span>
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                            </button>
+                            <div class="date-dropdown" id="dateDropdown">
+                                <button class="date-option active" data-value="30">Last 30 Days</button>
+                                <button class="date-option" data-value="7">Last 7 Days</button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Pinterest-style Masonry Grid -->
+                    <div class="masonry-grid">
+                        <div class="masonry-item animate-on-scroll fade-up" style="transition-delay: 0.1s">
+                            <div class="card stat-card">
+                                <h4>Total Revenue</h4>
+                                <div class="stat-value">$124,500</div>
+                                <div class="stat-change positive">+14.5% vs last month</div>
+                            </div>
+                        </div>
+                        <div class="masonry-item animate-on-scroll fade-up" style="transition-delay: 0.2s">
+                            <div class="card stat-card">
+                                <h4>Active Users</h4>
+                                <div class="stat-value">12,450</div>
+                                <div class="stat-change positive">+5.2% vs last month</div>
+                            </div>
+                        </div>
+                        <div class="masonry-item animate-on-scroll fade-up" style="transition-delay: 0.3s">
+                            <div class="card stat-card">
+                                <h4>Bounce Rate</h4>
+                                <div class="stat-value">42.3%</div>
+                                <div class="stat-change negative">-2.1% vs last month</div>
+                            </div>
+                        </div>
+                        
+                        <!-- Chart Widgets -->
+                        <div class="masonry-item animate-on-scroll fade-up" style="transition-delay: 0.4s">
+                            <div class="card chart-card">
+                                <h4>Revenue Overview</h4>
+                                <div class="chart-container" style="height: 350px;">
+                                    <canvas id="revenueChart"></canvas>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="masonry-item animate-on-scroll fade-up" style="transition-delay: 0.5s">
+                            <div class="card chart-card">
+                                <h4>Traffic Sources</h4>
+                                <div class="chart-container" style="height: 280px;">
+                                    <canvas id="trafficChart"></canvas>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="masonry-item animate-on-scroll fade-up" style="transition-delay: 0.6s">
+                            <div class="card chart-card">
+                                <h4>User Activity</h4>
+                                <div class="chart-container" style="height: 400px;">
+                                    <canvas id="activityChart"></canvas>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </section>
+            </div>
+        </main>
+    </div>
+
+    <!-- Scripts -->
+    <script src="js/data.js"></script>
+    <script src="js/utils.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>
