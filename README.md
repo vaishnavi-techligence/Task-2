@@ -161,6 +161,13 @@ Interactive transforms are used to create depth and motion.
 | Mobile      | Single-column stacked layout |
 
 ---
+## Screenshots of execution
+<img width="1919" height="914" alt="Screenshot 2026-05-19 191908" src="https://github.com/user-attachments/assets/f95d427c-d838-4264-99e5-649a16fc1c21" />
+<img width="1919" height="897" alt="image" src="https://github.com/user-attachments/assets/0c413a69-5ed8-4dec-961d-0e02338b4655" />
+<img width="1919" height="907" alt="image" src="https://github.com/user-attachments/assets/7e888aa3-205e-4a06-a720-d3c1d1db9218" />
+<img width="1919" height="911" alt="image" src="https://github.com/user-attachments/assets/96403bb2-f274-49d0-93e3-ca7a941f9556" />
+<img width="1601" height="842" alt="image" src="https://github.com/user-attachments/assets/f66635ed-3df5-4494-936a-25c1bdc2c871" />
+
 
 ## Browser Support
 
